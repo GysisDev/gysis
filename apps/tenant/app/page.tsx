@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getCurrentTenant } from "../lib/tenant";
+import Header from "./_components/header";
 
 export default async function TenantHome() {
 
@@ -10,6 +11,7 @@ export default async function TenantHome() {
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
+      <Header />
        <h1 className="text-4xl font-bold text-brand-primary/50">
          Welcome to {tenant.brand?.name}
        </h1>

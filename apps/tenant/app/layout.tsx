@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { getCurrentTenant } from "../lib/tenant";
 import { ClerkProvider } from "@clerk/nextjs";
+import { TenantProvider } from "../lib/TenantContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -50,7 +51,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <header style={{ padding: 12, borderBottom: "1px solid #eee" }}>
           <strong>{name}</strong>
         </header>
-        <main style={{ maxWidth: 960, margin: "24px auto" }}>{children}</main>
+        <main style={{ maxWidth: 960, margin: "24px auto" }}>
+        {tenant && <TenantProvider value={tenant}>{children}</TenantProvider>}
+        {!tenant && children}
+        </main>
       </body>
     </html>
     </ClerkProvider>  
