@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { getCurrentTenant } from "../lib/tenant";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,6 +32,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const name = tenant?.brand?.name || "Gysis Development";
 
   return (
+    <ClerkProvider>
     <html lang="en">
      <body
   style={
@@ -51,5 +53,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <main style={{ maxWidth: 960, margin: "24px auto" }}>{children}</main>
       </body>
     </html>
+    </ClerkProvider>  
   );
 }

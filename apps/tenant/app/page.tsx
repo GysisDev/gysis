@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { getCurrentTenant } from "../lib/tenant";
 
 export default async function TenantHome() {
@@ -14,9 +15,9 @@ export default async function TenantHome() {
        </h1>
        <p className="bg-brand-surface text-brand-text p-4 rounded-md">
         Slug: {tenant.slug}</p>
-        <button className="bg-brand-primary text-brand-surface p-4 rounded-md">
+        <Link href="/admin" className="bg-brand-primary text-brand-surface p-4 rounded-md">
           Click me
-        </button>
+        </Link>
     </div>
   );
 }
